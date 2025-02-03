@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "597148037834",
+    "project_id": "commerce-cce36",
+    "storage_bucket": "commerce-cce36.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597148037834:android:af3be35ee157c3639fba33",
+        "android_client_info": {
+          "package_name": "com.example.commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597148037834-djddhtt1q79j0k1hpbbcpsors9prgdjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ8ANQ2SRvoVWwXjUh9gWyiE4R3ZAgvSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597148037834-djddhtt1q79j0k1hpbbcpsors9prgdjt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "597148037834-lphgg161ib8klor165ln014gr6rc9l06.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.commerce"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597148037834:android:f43886b15bad34b89fba33",
+        "android_client_info": {
+          "package_name": "com.example.commerce8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597148037834-djddhtt1q79j0k1hpbbcpsors9prgdjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ8ANQ2SRvoVWwXjUh9gWyiE4R3ZAgvSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597148037834-djddhtt1q79j0k1hpbbcpsors9prgdjt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "597148037834-lphgg161ib8klor165ln014gr6rc9l06.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.commerce"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
