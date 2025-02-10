@@ -6,7 +6,15 @@ class Helpview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(),
+      body: Center(
+        child: Dialog(
+          backgroundColor: Colors.amber,
+          child: Container(
+            height: 100,
+            width: 100,
+          ),
+        ),
+      ),
     );
   }
 }

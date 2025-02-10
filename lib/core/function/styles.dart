@@ -6,6 +6,11 @@ abstract class Appstyles {
     color: Colors.grey,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle font18 = const TextStyle(
+    fontSize: 18,
+    color: Colors.black,
+    fontWeight: FontWeight.w400,
+  );
   static TextStyle font30semibold = const TextStyle(
     fontSize: 30,
     color: Colors.black,

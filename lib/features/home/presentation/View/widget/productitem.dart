@@ -1,10 +1,11 @@
 import 'package:commerce8/core/constant/assets.dart';
 import 'package:commerce8/core/function/styles.dart';
+import 'package:commerce8/features/home/domain/entites/product_entity.dart';
 import 'package:flutter/material.dart';
 
 class Productitem extends StatelessWidget {
-  const Productitem({super.key});
-
+  const Productitem({super.key, required this.productEntity});
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -30,13 +31,15 @@ class Productitem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'data',
-                    style: Appstyles.font23,
+                    productEntity.nametitle,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: Appstyles.font18,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(r'$233'),
+                      Text(r'$' '${productEntity.prices}'),
                       IconButton(
                         onPressed: () {},
                         icon: const Icon(
@@ -52,9 +55,10 @@ class Productitem extends StatelessWidget {
         ),
         Positioned(
           top: -30,
-          left: 50,
-          child: Image.asset(
-            Assets.assetsImagesLogo,
+          left: 30,
+          right: 30,
+          child: Image.network(
+            productEntity.imageproduct,
             height: 80,
           ),
         )
