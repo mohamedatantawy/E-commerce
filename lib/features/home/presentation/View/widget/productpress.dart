@@ -12,7 +12,7 @@ final ProductEntity productEntity;
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(Gorouter2.kproductdetail);
+        GoRouter.of(context).push(Gorouter2.kproductdetail,extra:  productEntity);
         // Navigator.push(context, MaterialPageRoute(builder: (context) {
         //   return const Productview();
         // }));

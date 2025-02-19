@@ -7,13 +7,20 @@ class ListViewofcategers extends StatelessWidget {
     super.key,
   });
   final List<Categersmodel> names = const [
-    Categersmodel(name: 'Jackets'),
-    Categersmodel(name: 'Shoes'),
-    Categersmodel(name: 'Pants'),
-    Categersmodel(name: 'Hats'),
-    Categersmodel(name: 'shirts'),
     Categersmodel(name: 'all'),
+    Categersmodel(name: 'electronics'),
+    Categersmodel(name: 'jewelery'),
+    Categersmodel(name:"men's clothing"),
+    Categersmodel(name: "women's clothing"),
+   
+    
   ];
+
+  /*
+    "electronics",
+    "jewelery",
+    "men's clothing",
+    "women's clothing" */
   @override
   Widget build(BuildContext context) {
     return SizedBox(

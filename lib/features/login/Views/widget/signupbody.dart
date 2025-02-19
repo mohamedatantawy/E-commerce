@@ -32,6 +32,7 @@ class _SignupbodyState extends State<Signupbody> {
           // GoRouter.of(context).push(Goruouter.khomeView);
 
           isloading = false;
+          
           GoRouter.of(context).pop();
         } else if (state is AuthsRegistorfailure) {
           isloading = false;

@@ -7,7 +7,11 @@ final class AuthsInitial extends AuthsState {}
 
 final class Authsloading extends AuthsState {}
 
-final class AuthsLoginSucess extends AuthsState {}
+final class AuthsLoginSucess extends AuthsState {
+  final String uil;
+
+  AuthsLoginSucess({required this.uil});
+}
 
 final class AuthsLoginfailure extends AuthsState {
   final String emassage;

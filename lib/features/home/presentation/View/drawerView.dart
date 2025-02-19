@@ -1,12 +1,17 @@
 import 'package:commerce8/core/constant/assets.dart';
 import 'package:commerce8/core/function/styles.dart';
+import 'package:commerce8/features/home/presentation/View/model/accountmodels.dart';
 import 'package:commerce8/features/home/presentation/View/model/drawermodel.dart';
 import 'package:commerce8/features/home/presentation/View/widget/RowofDrawer.dart';
-import 'package:flutter/foundation.dart';
+import 'package:commerce8/features/home/presentation/mange/cubit/accountshow_cubit.dart';
+import 'package:commerce8/main.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Drawerview extends StatelessWidget {
-  const Drawerview({super.key});
+  const Drawerview({super.key, required this.uid});
+  final String uid;
   final List<Drawermodel> name = const [
     Drawermodel(
       nameicon: 'Setting',
@@ -29,52 +34,90 @@ class Drawerview extends StatelessWidget {
       icon: Icons.logout,
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width * 0.6,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.white,
+        color: chanagecolorofthemeff().gettheme(context) == true
+            ? Colors.white
+            : Colors.grey,
+        // color: BlocProvider.of<SettingCubit>(context).theme2 == 'light'
+        //     ? Colors.white
+        //     : Colors.grey,
       ),
-      child: ListView(
-        children: [
-          DrawerHeader(
-            child: Column(
+      child: BlocBuilder<AccountshowCubit, AccountshowState>(
+        builder: (context, state) {
+          if (state is Accountshowsuccess) {
+            return ListView(
               children: [
-                const CircleAvatar(
-                  backgroundColor: Colors.white,
-                  backgroundImage: AssetImage(
-                    Assets.assetsImagesLogo,
-                  ),
-                  radius: 50,
+                customdrawerheader(
+                  accountmodels: state.accountmodels,
                 ),
-                Text(
-                  'Mohamed tantawy',
-                  style: Appstyles.font20,
+                const SizedBox(
+                  height: 40,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    children: List.generate(
+                      name.length,
+                      (index) {
+                        return RowofDrawer(
+                          accountmodels: state.accountmodels,
+                          name: name,
+                          index: index,
+                        );
+                      },
+                    ),
+                  ),
                 ),
               ],
+            );
+          } else {
+            return const CircularProgressIndicator();
+          }
+        },
+      ),
+    );
+  }
+}
+
+class customdrawerheader extends StatelessWidget {
+  const customdrawerheader({
+    super.key,
+    required this.accountmodels,
+  });
+  final Accountmodels accountmodels;
+  @override
+  Widget build(BuildContext context) {
+    return DrawerHeader(
+      child: Column(
+        children: [
+          const CircleAvatar(
+            backgroundColor: Colors.white,
+            backgroundImage: AssetImage(
+              Assets.assetsImagesIMG20230611201350769,
             ),
+            radius: 50,
           ),
-          const SizedBox(
-            height: 40,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Column(
-              children: List.generate(
-                name.length,
-                (index) {
-                  return RowofDrawer(
-                    name: name,
-                    index: index,
-                  );
-                },
-              ),
+          Text(
+            accountmodels.name,
+            style: Appstyles.font20.copyWith(
+              color: chanagecolorofthemeff().gettheme(context) == true
+                  ? Colors.black
+                  : Colors.white,
             ),
           ),
         ],
       ),
+    );
+    return BlocBuilder<AccountshowCubit, AccountshowState>(
+      builder: (context, state) {
+        if (state is Accountshowsuccess) {}
+      },
     );
   }
 }

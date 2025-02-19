@@ -2,6 +2,7 @@ import 'package:commerce8/core/function/styles.dart';
 import 'package:commerce8/features/home/presentation/View/widget/Allproducts.dart';
 import 'package:commerce8/features/home/presentation/View/widget/listViewofcategers.dart';
 import 'package:commerce8/features/home/presentation/mange/cubit/fetch_allproduct_cubit.dart';
+import 'package:commerce8/features/home/presentation/mange/cubit/fetchcategersproduct_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,12 +47,12 @@ class allproducrblocbuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FetchAllproductCubit, FetchAllproductState>(
+    return BlocBuilder<FetchcategersproductCubit, FetchcategersproductState>(
       builder: (context, state) {
-        if (state is FetchAllproductSuccess) {
+        if (state is Fetchcategersproductsucces) {
           return  Allproducts(productEntity: state.allproduct,);
-        } else if (state is FetchAllproductFailure) {
-          return SliverToBoxAdapter(child: Text(state.errormassage));
+        } else if (state is Fetchcategersproductfailure) {
+          return SliverToBoxAdapter(child: Text(state.emassage));
         } else {
           return const SliverToBoxAdapter(child: Center(child: const CircularProgressIndicator()));
         }

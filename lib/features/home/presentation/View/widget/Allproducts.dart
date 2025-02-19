@@ -10,6 +10,7 @@ class Allproducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverGrid.builder(
       itemCount:productEntity.length,
+      
       //shrinkWrap: true,
       //  physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -18,6 +19,7 @@ class Allproducts extends StatelessWidget {
         mainAxisExtent: 140,
         mainAxisSpacing: 80,
         crossAxisCount: 2,
+        
       ),
       itemBuilder: (context, index) {
         return  Productpress(productEntity: productEntity[index],);

@@ -1,6 +1,7 @@
 import 'package:commerce8/features/aboutus/View/aboutusView.dart';
 import 'package:commerce8/features/help/View/helpView.dart';
 import 'package:commerce8/features/home/presentation/View/homeView.dart';
+import 'package:commerce8/features/home/presentation/View/model/accountmodels.dart';
 import 'package:commerce8/features/login/Views/forgetpassword.dart';
 import 'package:commerce8/features/login/Views/login.dart';
 import 'package:commerce8/features/login/Views/signup.dart';
@@ -28,11 +29,16 @@ abstract class Gorouter2 {
   static final router = GoRouter(routes: [
     GoRoute(
       path: kstart,
-      builder: (context, state) => const Homeview(),
+      builder: (context, state) => const Onboredingview(),
     ),
     GoRoute(
       path: klogout,
-      builder: (context, state) => const Logoutview(),
+      builder: (context, state) {
+        var account = GoRouterState.of(context).extra as Accountmodels;
+        return Logoutview(
+          accountmodels: account,
+        );
+      },
     ),
     GoRoute(
       path: ksearch,
@@ -40,7 +46,12 @@ abstract class Gorouter2 {
     ),
     GoRoute(
       path: ksetting,
-      builder: (context, state) => const Settingview(),
+       builder: (context, state) {
+        var account = GoRouterState.of(context).extra as Accountmodels;
+        return Settingview(
+          accountmodels: account,
+        );
+      },
     ),
     GoRoute(
       path: kaboutus,
@@ -52,7 +63,12 @@ abstract class Gorouter2 {
     ),
     GoRoute(
       path: kprofileView,
-      builder: (context, state) => const Profileview(),
+      builder: (context, state) {
+        var account = GoRouterState.of(context).extra as Accountmodels;
+        return Profileview(
+          accountmodels: account,
+        );
+      },
     ),
     GoRoute(
       path: klogin,
@@ -68,7 +84,10 @@ abstract class Gorouter2 {
     ),
     GoRoute(
       path: khomeView,
-      builder: (context, state) => const Homeview(),
+      builder: (context, state) {
+        String uid = GoRouterState.of(context).extra as String;
+        return Homeview(uid: uid);
+      },
     ),
     GoRoute(
       path: kproductdetail,

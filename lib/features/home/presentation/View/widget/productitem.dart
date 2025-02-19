@@ -1,4 +1,3 @@
-import 'package:commerce8/core/constant/assets.dart';
 import 'package:commerce8/core/function/styles.dart';
 import 'package:commerce8/features/home/domain/entites/product_entity.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +20,7 @@ class Productitem extends StatelessWidget {
             ),
           ]),
           child: Card(
+            color: Colors.white,
             elevation: 10,
             child: Padding(
               padding: const EdgeInsets.symmetric(
@@ -34,12 +34,19 @@ class Productitem extends StatelessWidget {
                     productEntity.nametitle,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
-                    style: Appstyles.font18,
+                    style: Appstyles.font18.copyWith(
+                      color: Colors.black,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(r'$' '${productEntity.prices}'),
+                      Text(
+                        r'$' '${productEntity.prices}',
+                        style: Appstyles.font22.copyWith(
+                          color: Colors.black,
+                        ),
+                      ),
                       IconButton(
                         onPressed: () {},
                         icon: const Icon(

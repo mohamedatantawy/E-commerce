@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, List<ProductEntity>>> fetchallproduct();
+   Future<Either<Failure, List<ProductEntity>>> fetchcategersproduct(String categes);
 }

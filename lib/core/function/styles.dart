@@ -8,7 +8,7 @@ abstract class Appstyles {
   );
   static TextStyle font18 = const TextStyle(
     fontSize: 18,
-    color: Colors.black,
+    //color: Colors.black,
     fontWeight: FontWeight.w400,
   );
   static TextStyle font30semibold = const TextStyle(
@@ -28,17 +28,17 @@ abstract class Appstyles {
   );
   static TextStyle font23 = const TextStyle(
     fontSize: 22,
-    color: Colors.black,
+    // color: Colors.black,
     fontWeight: FontWeight.w400,
   );
   static TextStyle font20 = const TextStyle(
     fontSize: 20,
-    color: Colors.black,
+    //color: Colors.black,
     fontWeight: FontWeight.w500,
   );
   static TextStyle font28 = const TextStyle(
     fontSize: 28,
-    color: Colors.black,
+    //color: Colors.black,
     fontWeight: FontWeight.w500,
   );
   static TextStyle font30 = const TextStyle(

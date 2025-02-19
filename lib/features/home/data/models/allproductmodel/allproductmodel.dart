@@ -23,6 +23,7 @@ class Allproductmodel extends ProductEntity {
           idproduct: id,
           imageproduct: image,
           nametitle: title,
+          subtitle: description,
           prices: price,
           rate: rating.rate,
         );

@@ -9,8 +9,11 @@ part 'auths_state.dart';
 
 class AuthsBloc extends Bloc<AuthsEvent, AuthsState> {
   AuthsBloc() : super(AuthsInitial()) {
+   
     on<AuthsEvent>((event, emit) async {
+      
       if (event is LoginEvent) {
+         
         emit(Authsloading());
         try {
           final credential =
@@ -18,7 +21,7 @@ class AuthsBloc extends Bloc<AuthsEvent, AuthsState> {
             email: event.email,
             password: event.password,
           );
-          emit(AuthsLoginSucess());
+          emit(AuthsLoginSucess(uil: credential.user!.uid));
         } on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {
             emit(AuthsLoginfailure(emassage: 'No user found for that email.'));
@@ -42,8 +45,10 @@ class AuthsBloc extends Bloc<AuthsEvent, AuthsState> {
           CollectionReference users =
               FirebaseFirestore.instance.collection('users');
           User? user = credential.user;
+         String uil;
           // Usersmodel usersmodel;
           if (user != null) {
+            uil= user.uid;
             users.doc(user.uid).set({
               'name': event.usersmodel.name,
               'email': event.usersmodel.email,

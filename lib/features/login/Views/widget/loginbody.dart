@@ -31,7 +31,7 @@ class _loginbodyState extends State<loginbody> {
           // GoRouter.of(context).push(Goruouter.khomeView);
 
           isloading = false;
-          GoRouter.of(context).pushReplacement(Gorouter2.khomeView);
+          GoRouter.of(context).pushReplacement(Gorouter2.khomeView,extra: state.uil);
           // Navigator.pushReplacement(context,
           //     MaterialPageRoute(builder: (context) {
           //   return const Homeview();

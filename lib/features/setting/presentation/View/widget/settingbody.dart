@@ -1,27 +1,57 @@
-import 'package:commerce8/core/function/styles.dart';
+import 'package:commerce8/features/home/presentation/View/model/accountmodels.dart';
+import 'package:commerce8/features/setting/presentation/View/widget/commonsetting.dart';
+import 'package:commerce8/features/setting/presentation/View/widget/moresetting.dart';
+import 'package:commerce8/features/setting/presentation/View/widget/personsetting.dart';
 import 'package:flutter/material.dart';
 
-class Settingbody extends StatefulWidget {
-  const Settingbody({super.key});
+// class Settingbody extends StatefulWidget {
+//   const Settingbody({super.key});
 
-  @override
-  State<Settingbody> createState() => _SettingbodyState();
-}
+//   @override
+//   State<Settingbody> createState() => _SettingbodyState();
+// }
 
-class _SettingbodyState extends State<Settingbody> {
+class Settingbody extends StatelessWidget {
+  const Settingbody({super.key, required this.accountmodels});
+  final Accountmodels accountmodels;
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
-        Column(
+        const SizedBox(
+          height: 30,
+        ),
+        const Commonsetting(),
+        const SizedBox(
+          height: 40,
+        ),
+        Personsetting(
+          accountmodels: accountmodels,
+        ),
+        const SizedBox(
+          height: 40,
+        ),
+        const Moresetting(),
+      ],
+    );
+  }
+}
+/* Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 12),
               child: Text(
                 'Commen',
-                style: Appstyles.font20,
+                style: Appstyles.font20.copyWith(
+                  color:  chanagecolorofthemeff().gettheme(context) == true
+                      ? Colors.black
+                      : Colors.white,
+                ),
               ),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Container(
               height: 60,
@@ -39,27 +69,39 @@ class _SettingbodyState extends State<Settingbody> {
                     'Language',
                     style: Appstyles.font23,
                   ),
-                  Spacer(),
+                 const Spacer(),
                   TextButton(
                     onPressed: () {
-                        Center(
-                          child: Dialog(
-                          insetAnimationDuration: Duration(
-                            seconds: 1,
-                          ),
-                          backgroundColor: Colors.black,
-                          child: Container(
-                            height: 120,
-                            width: 120,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Colors.amber),
-                          ),
-                                                ),
-                        );
-                      setState(() {
-                      
-                      });
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Center(
+                            child: AlertDialog(
+                              title: const Text(
+                                'Language',
+                              ),
+                              elevation: 0,
+                              content: SizedBox(
+                                height: 100,
+                                child: Column(
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      child:const Text('Arabic'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      child:const Text('English'),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              // backgroundColor: Colors.red,
+                            ),
+                          );
+                        },
+                      );
                     },
                     child: Row(
                       children: [
@@ -91,15 +133,58 @@ class _SettingbodyState extends State<Settingbody> {
                     'Dark or light Theme',
                     style: Appstyles.font23,
                   ),
-                  Spacer(),
+                 const Spacer(),
                   TextButton(
                     onPressed: () {
-                    
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Center(
+                            child: AlertDialog(
+                              title: const Text(
+                                'Dark or light Theme',
+                              ),
+                              elevation: 0,
+                              content: SizedBox(
+                                height: 100,
+                                child: Column(
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          BlocProvider.of<SettingCubit>(context)
+                                              .changetheme('light');
+                                          print('light theme');
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child:const Text('light'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          BlocProvider.of<SettingCubit>(context)
+                                              .changetheme('dark');
+                                          print('dark theme');
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child:const Text('dark'),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              // backgroundColor: Colors.red,
+                            ),
+                          );
+                        },
+                      );
                     },
                     child: Row(
                       children: [
                         Text(
-                          'Light',
+                          BlocProvider.of<SettingCubit>(context).theme2,
                           style: Appstyles.font18,
                         ),
                         const Icon(Icons.arrow_drop_down_outlined),
@@ -111,8 +196,4 @@ class _SettingbodyState extends State<Settingbody> {
               ),
             )
           ],
-        )
-      ],
-    );
-  }
-}
+        ), */
