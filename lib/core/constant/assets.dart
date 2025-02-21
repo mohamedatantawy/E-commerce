@@ -33,5 +33,9 @@ class Assets {
   /// Assets for assetsImagesOnboardingtwo
   /// assets/images/onboardingtwo.PNG
   static const String assetsImagesOnboardingtwo = "assets/images/onboardingtwo.PNG";
+
+  /// Assets for assetsImagesPaypal
+  /// assets/images/paypal.svg
+  static const String assetsImagesPaypal = "assets/images/paypal.svg";
 }
 

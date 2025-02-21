@@ -47,7 +47,7 @@ class ListViewofLogin extends StatelessWidget {
         Center(
           child: Text(
             '--> Enter your account',
-            style: Appstyles.font20,
+            style: Appstyles.font20.copyWith(color: Colors.black),
           ),
         ),
         const SizedBox(
@@ -81,8 +81,7 @@ class ListViewofLogin extends StatelessWidget {
             child: Text(
               'Forget password',
               style: Appstyles.font20.copyWith(
-                decoration: TextDecoration.underline,
-              ),
+                  decoration: TextDecoration.underline, color: Colors.purple),
             ),
           ),
         ),
@@ -117,7 +116,7 @@ class ListViewofLogin extends StatelessWidget {
           children: [
             Text(
               "Don't have an account? -->",
-              style: Appstyles.font20,
+              style: Appstyles.font20.copyWith(color: Colors.black),
             ),
             TextButton(
                 onPressed: () {

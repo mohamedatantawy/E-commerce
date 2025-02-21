@@ -40,9 +40,12 @@ class _HomeviewState extends State<Homeview> {
         actions: [
           IconButton(
             onPressed: () {
-              GoRouter.of(context).push(Gorouter2.ksearch);
+              GoRouter.of(context).push(Gorouter2.kbuyproduct);
             },
-            icon: const Icon(Icons.search),
+            icon: const Icon(
+              Icons.shopping_cart_rounded,
+              size: 28,
+            ),
           ),
         ],
         //  backgroundColor: Colors.white,

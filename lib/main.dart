@@ -2,6 +2,8 @@ import 'package:commerce8/core/function/Gorouter2.dart';
 import 'package:commerce8/core/utils/api_seervice.dart';
 import 'package:commerce8/core/utils/shared_perfernces.dart';
 import 'package:commerce8/core/utils/themetype.dart';
+import 'package:commerce8/features/cart/view_model/cubit/cart_cubit.dart';
+import 'package:commerce8/features/favorite/view_model/cubit/favorite_cubit.dart';
 import 'package:commerce8/features/home/data/Repo_Imple/Home_Repe_Imple.dart';
 import 'package:commerce8/features/home/data/data_source/Home_remote_data_source.dart';
 import 'package:commerce8/features/home/presentation/View/homeView.dart';
@@ -57,6 +59,14 @@ class _Commerce8State extends State<Commerce8> {
         BlocProvider(
           create: (context) => SettingCubit()..changetheme(widget.theme),
         ),
+        BlocProvider(
+            create: (context) => FavoriteCubit(),
+           
+          ),
+           BlocProvider(
+            create: (context) => CartCubit(),
+           
+          )
       ],
       child: BlocBuilder<SettingCubit, SettingState>(
         builder: (context, state) {

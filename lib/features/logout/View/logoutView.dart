@@ -1,8 +1,11 @@
 import 'package:commerce8/core/constant/assets.dart';
+import 'package:commerce8/core/function/Gorouter2.dart';
 import 'package:commerce8/core/function/styles.dart';
 import 'package:commerce8/core/widget/customelevaterbutton.dart';
 import 'package:commerce8/features/home/presentation/View/model/accountmodels.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Logoutview extends StatelessWidget {
   const Logoutview({super.key, required this.accountmodels});
@@ -95,7 +98,12 @@ class Logoutview extends StatelessWidget {
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 30, horizontal: 25),
                             content: Customelevaterbutton(
-                                onpressed: () {}, title: 'Yes'));
+                                onpressed: () async {
+                                  await FirebaseAuth.instance.signOut();
+                                  GoRouter.of(context)
+                                      .pushReplacement(Gorouter2.klogin);
+                                },
+                                title: 'Yes'));
                       });
                 },
                 title: 'Log out')

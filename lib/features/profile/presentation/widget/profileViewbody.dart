@@ -103,7 +103,7 @@ class Profileviewbody extends StatelessWidget {
                 ),
                 Customelevaterbutton(
                     onpressed: () {
-                      GoRouter.of(context).pushReplacement(Gorouter2.klogout);
+                      GoRouter.of(context).pushReplacement(Gorouter2.klogout,extra:  accountmodels);
                     },
                     title: 'Log out')
               ],

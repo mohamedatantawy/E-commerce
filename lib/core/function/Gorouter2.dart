@@ -1,4 +1,6 @@
 import 'package:commerce8/features/aboutus/View/aboutusView.dart';
+import 'package:commerce8/features/cart/View/cartview.dart';
+import 'package:commerce8/features/favorite/view/favoriteView.dart';
 import 'package:commerce8/features/help/View/helpView.dart';
 import 'package:commerce8/features/home/presentation/View/homeView.dart';
 import 'package:commerce8/features/home/presentation/View/model/accountmodels.dart';
@@ -23,13 +25,23 @@ abstract class Gorouter2 {
   static const String ksignup = '/signupView';
   static const String khomeView = '/homeView';
   static const String kprofileView = '/profileView';
+  static const String kfavorite = '/favorite';
   static const String klogout = '/logoutView';
   static const String ksearch = '/searchView';
+  static const String kbuyproduct = '/buyproduct';
   static const String kproductdetail = '/productdetailView';
   static final router = GoRouter(routes: [
     GoRoute(
       path: kstart,
       builder: (context, state) => const Onboredingview(),
+    ),
+    GoRoute(
+      path: kbuyproduct,
+      builder: (context, state) => const Cartview(),
+    ),
+    GoRoute(
+      path: kfavorite,
+      builder: (context, state) => const Favoriteview(),
     ),
     GoRoute(
       path: klogout,
@@ -46,7 +58,7 @@ abstract class Gorouter2 {
     ),
     GoRoute(
       path: ksetting,
-       builder: (context, state) {
+      builder: (context, state) {
         var account = GoRouterState.of(context).extra as Accountmodels;
         return Settingview(
           accountmodels: account,

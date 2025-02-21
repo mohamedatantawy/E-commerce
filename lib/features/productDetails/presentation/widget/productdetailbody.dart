@@ -1,7 +1,12 @@
+import 'package:commerce8/core/function/Gorouter2.dart';
 import 'package:commerce8/core/function/styles.dart';
 import 'package:commerce8/core/widget/customelevaterbutton.dart';
+import 'package:commerce8/features/cart/view_model/cubit/cart_cubit.dart';
+import 'package:commerce8/features/favorite/view_model/cubit/favorite_cubit.dart';
 import 'package:commerce8/features/home/domain/entites/product_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class Productdetailbody extends StatelessWidget {
   const Productdetailbody({super.key, required this.product});
@@ -53,7 +58,9 @@ class Productdetailbody extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.favorite))
+                favoritbotton(
+                  product: product,
+                )
               ],
             ),
           ),
@@ -69,9 +76,56 @@ class Productdetailbody extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Customelevaterbutton(onpressed: () {}, title: 'Add in your cart')
+          Customelevaterbutton(
+              onpressed: () {
+                //GoRouter.of(context).push(Gorouter2.kbuyproduct,extra:  product);
+                
+                if( !BlocProvider.of<CartCubit>(context).showproduct(product)){
+BlocProvider.of<CartCubit>(context).saveproduct(product);
+                }
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                    "This product Add in your cart",
+                    style: Appstyles.font18,
+                  ),
+                ));
+              },
+              title: 'Add in cart')
         ],
       ),
     );
+  }
+}
+
+class favoritbotton extends StatefulWidget {
+  const favoritbotton({
+    super.key,
+    required this.product,
+  });
+  final ProductEntity product;
+  @override
+  State<favoritbotton> createState() => _favoritbottonState();
+}
+
+class _favoritbottonState extends State<favoritbotton> {
+  bool issave = false;
+  @override
+  Widget build(BuildContext context) {
+    issave =
+        BlocProvider.of<FavoriteCubit>(context).showproduct(widget.product);
+    return IconButton(
+        onPressed: () {
+          if (issave == true) {
+            BlocProvider.of<FavoriteCubit>(context)
+                .removeproduct(widget.product);
+          } else {
+            BlocProvider.of<FavoriteCubit>(context).saveproduct(widget.product);
+          }
+          setState(() {});
+        },
+        icon: Icon(
+          Icons.favorite,
+          color: issave == true ? Colors.red : null,
+        ));
   }
 }

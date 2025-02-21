@@ -22,6 +22,10 @@ class Drawerview extends StatelessWidget {
       icon: Icons.person,
     ),
     Drawermodel(
+      nameicon: 'Favorite',
+      icon: Icons.favorite,
+    ),
+    Drawermodel(
       nameicon: 'Help',
       icon: Icons.help,
     ),
